@@ -1,4 +1,4 @@
-# 🏆 Children's Speech Recognition Solution
+# Children's Speech Recognition Solution
 ## On Top of Pasketti: Children’s Speech Recognition Challenge (Word Track)
 
 **Competition Link:** [DrivenData: On Top of Pasketti](https://www.drivendata.org/competitions/308/childrens-word-asr/)
@@ -67,3 +67,4 @@ Due to the large size of the model (~1.5GB - 6GB) and local environment restrict
 *   `transformers`
 *   `torchaudio`
 *   `librosa`
+
