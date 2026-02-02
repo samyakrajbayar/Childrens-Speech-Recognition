@@ -1,0 +1,32 @@
+# Children's ASR Competition Requirements
+# Core ML libraries
+torch>=2.1.0
+torchaudio>=2.1.0
+transformers>=4.36.0
+datasets>=2.15.0
+accelerate>=0.25.0
+
+# Audio processing
+librosa>=0.10.1
+soundfile>=0.12.1
+scipy>=1.11.4
+pyloudnorm>=0.1.3
+
+# Metrics and evaluation
+jiwer>=3.0.0
+
+# Data handling
+numpy>=1.24.3
+pandas>=2.1.4
+
+# Tokenization
+sentencepiece>=0.1.99
+
+# Logging and monitoring
+wandb>=0.16.0
+
+# Configuration
+pyyaml>=6.0
+
+# Optional: Flash attention for faster inference (requires CUDA)
+# flash-attn>=2.3.0
