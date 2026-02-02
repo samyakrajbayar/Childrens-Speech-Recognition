@@ -1,0 +1,64 @@
+# Inference Configuration for Children's ASR
+# Competition-optimized settings
+
+# Model paths (use local paths for competition, or HuggingFace IDs for development)
+models:
+  whisper:
+    path: "openai/whisper-large-v3"
+    # path: "models/whisper_finetuned"  # Use for fine-tuned model
+    enabled: true
+    weight: 0.45
+    
+  wav2vec2:
+    path: "facebook/wav2vec2-xls-r-2b"
+    # path: "models/wav2vec2_finetuned"  # Use for fine-tuned model
+    enabled: true
+    weight: 0.35
+    
+  child_specialist:
+    path: "facebook/wav2vec2-base"
+    # path: "models/child_specialist"  # Use for custom model
+    enabled: true
+    weight: 0.20
+
+# Inference settings
+inference:
+  batch_size: 64              # Optimized for A100 80GB
+  num_workers: 8              # Parallel data loading
+  use_fp16: true              # Half precision for speed
+  max_audio_length: 30.0      # Maximum audio length in seconds
+  device: "cuda"              # Use GPU
+  
+# Generation settings (for Whisper)
+generation:
+  temperature: 0.7
+  beam_size: 5
+  repetition_penalty: 1.2
+  no_repeat_ngram_size: 3
+  
+# Preprocessing
+preprocessing:
+  target_sample_rate: 16000
+  noise_reduction: true
+  noise_threshold: 1.5
+  voice_enhancement: true
+  loudness_normalization: true
+  target_peak: 0.9
+  
+# Ensemble strategy
+ensemble:
+  strategy: "weighted"        # weighted, voting, or adaptive
+  confidence_threshold: 0.7   # Minimum confidence for single-model output
+  fallback_model: "whisper"   # Model to use if all confidences are low
+  
+# Child voice adaptation
+adaptation:
+  enabled: true
+  pitch_normalization: true
+  formant_adjustment: true
+  speed_normalization: true
+
+# Logging
+logging:
+  level: "INFO"
+  max_lines: 500              # Competition limit
